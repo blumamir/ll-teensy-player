@@ -18,11 +18,16 @@ SdLedsPlayer(unsigned int leds_per_strip, void *display_memory, void *drawing_me
 }
 
 public:
+  // call once for initialization
   void setup();
+  // will read the next frame from the loaded file and send it to the leds.
+  // return true on success and false in case no frame is available.
   bool show_next_frame();
 
 public:
+  // read a new file from sd card for led display
   void load_file(const char *file_name);
+  // return true if there is a file loaded, and there are more frames ready for display
   bool is_file_playing();
 
 private:
